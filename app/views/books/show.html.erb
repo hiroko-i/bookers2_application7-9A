@@ -1,6 +1,5 @@
 <p id="notice"><%= flash[:notice] %></p>
-
-<!--<%= render 'users/sidebar', user: @user, book: @book %>-->
+<%= render 'users/sidebar', user: @user, book: @newbook%>
 
 <h2>Book detail</h2>
 
@@ -13,7 +12,11 @@
           <%= @book.user.name %>
         <% end %>
       </td>
-      <td><%= @book.title %></td>
+      <td>
+        <%= link_to book_path(@book.id) do %>
+          <%= @book.title %>
+        <% end %>
+      </td>
       <td><%= @book.body %></td>
       <% if @book.user == current_user %>
       <td>

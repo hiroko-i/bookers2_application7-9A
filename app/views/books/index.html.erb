@@ -1,4 +1,15 @@
-<%= render 'users/sidebar', user: @user, book: @book%>
+<% if @newbook.errors.any? %>
+  <div id = "error">
+    <h2><%= @newbook.errors.count %> errors prohibited this obj from being saved:</h2>
+    <ul>
+      <% @newbook.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= render 'users/sidebar', user: @user, book: @newbook%>
 
 <h2>Books</h2>
 

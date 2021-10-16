@@ -7,20 +7,22 @@ class BooksController < ApplicationController
       flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book)
     else
-      @books = Book.all
+      # @user = current_user
+      # @newbook = Book.new
+      # @books = Book.all
       render :index
     end
   end
   
   def show
-    # 下記のbookに対する親モデuserのデータの書き方
     @book = Book.find(params[:id])
-    
+    @user = @book.user
+    @newbook = Book.new
   end
 
   def index
     @user = current_user
-    @book = Book.new
+    @newbook = Book.new
     @books = Book.all
   end
 
@@ -40,13 +42,12 @@ class BooksController < ApplicationController
   end
   
   def destroy
-    @book = Book.find(params[:id])
-    # @user = User.find_by(profile_image_id: params[:profile_image_id] )
-    @book.destroy
+    book = Book.find(params[:id])
+    book.destroy
     redirect_to books_path
   end
 
-  
+  private
   def book_params
     params.require(:book).permit(:title, :body)
   end
