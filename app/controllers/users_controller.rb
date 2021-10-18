@@ -34,15 +34,9 @@ class UsersController < ApplicationController
   end
 
   def ensure_user
-    @user = current_user
+    @user = User.find(params[:id])
     unless @user == current_user
     redirect_to user_path(current_user)
     end
   end
-  # def ensure_user
-  #   @user = User.find(params[:id])
-  #   unless @user == current_user
-  #   redirect_to user_path(current_user)
-  #   end
-  # end
 end
