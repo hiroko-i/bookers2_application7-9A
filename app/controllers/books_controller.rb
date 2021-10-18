@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
 
+  before_action :ensure_user, only: [:edit, :update, :destroy]
+
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
@@ -53,4 +55,9 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
 
+  def ensure_user
+    @books = current_user.books
+    @book = @books.find_by(id: params[:id])
+    redirect_to books_path unless @book
+  end
 end
