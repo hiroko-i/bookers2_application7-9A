@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   before_action :ensure_user, only: [:edit, :update, :destroy]
 
   def create
+    p book_params
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
