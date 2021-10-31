@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="col-xs-12">
+    <% if @range == "User" %>
+      <h2>Users seach for '<%= @users.seachwords %>'</h2>
+      <%= render 'users/index', users: @users %>
+    <% else if @range == "Book" %>
+      <h2>Books seach for '<%= @books.seachwords %>'</h2>
+      <%= render 'books/index', books: @books %>
+    <% else %>
+      <p>検索結果なし</p>
+    <% end %>
+  </div>
+</div>
