@@ -34,9 +34,9 @@ class User < ApplicationRecord
   def self.looks(seachwords,hows)
     if hows == "match"
       @user = User.where("name LIKE ?","#{seachwords}")
-    else　if hows == "forward_match"
+    elsif hows == "forward_match"
       @user = User.where("name LIKE ?","#{seachwords}%")
-    else　if hows == "backward_match"
+    elsif hows == "backward_match"
       @user = User.where("name LIKE ?","%#{seachwords}")
     else
       @user = User.where("name LIKE ?","%#{seachwords}%")

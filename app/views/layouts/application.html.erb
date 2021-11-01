@@ -57,7 +57,7 @@
     <main>
       <div class="container mt-3">
         <div class="row">
-          <div class="col-xs-6 col-xs-offset-3 text-center">
+          <div class="col-xs-6 col-xs-offset-3 text-center mx-auto">
             <% if user_signed_in? %>
               <%= form_with url: search_path, method: :get, local:true do |f| %>
                 <%= f.text_field :searchword %>

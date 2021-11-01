@@ -10,9 +10,9 @@ class Book < ApplicationRecord
   def self.looks(seachwords,hows)
     if hows == "match"
       @book = Book.where("title LIKE ?","#{seachwords}")
-    else　if hows == "forward_match"
+    elsif hows == "forward_match"
       @book = Book.where("title LIKE ?","#{seachwords}%")
-    else　if hows == "backward_match"
+    elsif hows == "backward_match"
       @book = Book.where("title LIKE ?","%#{seachwords}")
     else
       @book = Book.where("title LIKE ?","%#{seachwords}%")
